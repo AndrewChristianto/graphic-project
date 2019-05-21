@@ -3,7 +3,7 @@
 ### judul ....
 
 ### Anggota Kelompok : 
-* Andrew - 161111018
-* Raka - 161111032
-* Viki - 161111071
+* Andrew Christianto       - 161111018
+* Dominicus Raka Alfiyan   - 161111032
+* Vicky Fajar Ibrahim      - 161111071
 

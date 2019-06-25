@@ -77,8 +77,21 @@ glShadeModel(GL_FLAT);
     }
 
     void tube(){
-    float BODY_LENGTH=2.0f;
+    float BODY_LENGTH=0.5f;
     float BODY_RADIUS=1.0f;
+    int SLICES=30;
+    int STACKS=30;
+    GLUquadric *q = gluNewQuadric();
+    gluCylinder(q, BODY_RADIUS, BODY_RADIUS, BODY_LENGTH, SLICES, STACKS);
+    gluDisk(q, 0.0f, BODY_RADIUS, SLICES, STACKS); //lingkaran untuk tutup atas
+    glTranslatef(0.0f, 0.0f, BODY_LENGTH);
+    gluDisk(q, 0.0f, BODY_RADIUS, SLICES, STACKS); //lingkaran untuk tutup bawah
+
+    }
+
+void tube2(){
+    float BODY_LENGTH=3.0f;
+    float BODY_RADIUS=0.7f;
     int SLICES=30;
     int STACKS=30;
     GLUquadric *q = gluNewQuadric();
@@ -105,6 +118,15 @@ glShadeModel(GL_FLAT);
         tube();
         glRotatef(90,1.0f,0.0f,0.0f);
 
+        
+        glPushMatrix();
+        tube2(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
+        glPopMatrix();
+         glTranslatef(0.0f,0.0f,3.0f);
+        glPushMatrix();
+        tube(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
+        glPopMatrix();
+        
         glFlush();
         glutSwapBuffers();
 
@@ -119,17 +141,6 @@ glShadeModel(GL_FLAT);
         glutInitWindowSize(480, 360);
         glutInitWindowPosition(50, 50);
         glutCreateWindow("hemisphere");
-        glutDisplayFunc(display_pen);
-        glutReshapeFunc(reshape);
-        initGL();
-        glutMouseFunc(mouseControl);
-        glutMotionFunc(mouseMotion);
-        glutTimerFunc(0, timer, 0);
-
-        glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
-        glutInitWindowSize(480, 360);
-        glutInitWindowPosition(50, 50);
-        glutCreateWindow("pen");
         glutDisplayFunc(display_pen);
         glutReshapeFunc(reshape);
         initGL();

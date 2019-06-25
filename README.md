@@ -1,6 +1,6 @@
 # Tugas Akhir
 
-### judul ....
+### judul Animasi Mur dan Baut
 
 ### Anggota Kelompok : 
 * Andrew Christianto       - 161111018

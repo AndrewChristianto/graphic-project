@@ -102,37 +102,51 @@ void tube2(){
 
     }
 
-
-
+void donat()
+{
+    float BODY_LENGTH=0.6f;
+    float BODY_RADIUS1=0.6f;
+    float BODY_RADIUS2=0.8f;
+    int SLICES=120;
+    int STACKS=120;
+        GLUquadric *q = gluNewQuadric();
+        glTranslatef(3.0f, 0.0f, -0.6f);
+        gluDisk(q, BODY_RADIUS1, BODY_RADIUS2, SLICES, STACKS);
+        gluCylinder(q, BODY_RADIUS2, BODY_RADIUS2, 0.6f, SLICES, STACKS);
+        gluCylinder(q, BODY_RADIUS1, BODY_RADIUS2, 0.6f, SLICES, STACKS);
+        glTranslatef(0.0f, 0.0f, 0.6f);
+        gluDisk(q, BODY_RADIUS1, BODY_RADIUS2, SLICES, STACKS);
+}
 
     void display_pen(){
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glLoadIdentity();
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        glTranslatef(0,0.0f, -10.0f);
+        glTranslatef(0,0.0f, -15.0f);
         glRotatef(view_rotx, 1.0f, 0.0f, 0.0f);
         glRotatef(view_roty, 0.0f, 1.0f, 0.0f);
         glRotatef(45, 0.0f, 0.0f, 1.0f);
         glRotatef(90,0.0f,1.0f,0.0f);
-        tube();
         glRotatef(90,1.0f,0.0f,0.0f);
 
-        
+
         glPushMatrix();
         tube2(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
         glPopMatrix();
-         glTranslatef(0.0f,0.0f,3.0f);
+        glTranslatef(0.0f,0.0f,3.0f);
         glPushMatrix();
         tube(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
         glPopMatrix();
-        
+        glPushMatrix();
+        donat(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
+        glPopMatrix();
+        glTranslatef(0.0f,15.0f,3.0f);
+
         glFlush();
         glutSwapBuffers();
 
     }
-
-
 
     int main(int argc, char **argv){
         glutInit(&argc, argv);

@@ -161,6 +161,9 @@ void donat1()
         glTranslatef(-3.0f,0.0f,4.0f);
         donat1(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
         glPopMatrix();
+     
+        glFlush();
+        glutSwapBuffers();
 
     }
 

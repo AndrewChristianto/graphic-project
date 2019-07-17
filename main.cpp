@@ -106,7 +106,7 @@ void donat()
 {
     float BODY_LENGTH=0.6f;
     float BODY_RADIUS1=0.4f;
-    float BODY_RADIUS2=0.8f;
+    float BODY_RADIUS2=0.6f;
     int SLICES=120;
     int STACKS=120;
         GLUquadric *q = gluNewQuadric();

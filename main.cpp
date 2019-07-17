@@ -11,6 +11,7 @@
 float view_rotx = 0.0f, view_roty = 180.0f;
 float R_Z=0.0f, R_X=0.0f, R_Y=0.0f;
 float T_Z=-4.0f, T_X=0.0f, T_Y=-0.0f;
+float rot=1, pindah=0.0f;
 
 int oldMouseX, oldMouseY;
 
@@ -148,10 +149,14 @@ void donat1()
 
         glTranslatef(0.0f,0.0f,4.0f);
         glPushMatrix();
-        tube2(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
+            glTranslatef(0.0f, 0.0f, pindah);
+            glRotatef(rot, 0.0f, 0.0f, 1.0f);
+            tube2(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
         glPopMatrix();
         glPushMatrix();
-        tube(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
+            glTranslatef(0.0f, 0.0f, pindah);
+            glRotatef(rot, 0.0f, 0.0f, 1.0f);
+            tube(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
         glPopMatrix();
         glPushMatrix();
         glTranslatef(-3.0f,0.0f,4.0f);
@@ -161,10 +166,20 @@ void donat1()
         glTranslatef(-3.0f,0.0f,4.0f);
         donat1(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
         glPopMatrix();
-     
+
         glFlush();
         glutSwapBuffers();
 
+        rot++;
+        if(rot == 360) {
+            rot = 0;
+        }
+
+        if(pindah == 4.0f) {
+            pindah += 0.0f;
+        } else {
+            pindah += 0.01f;
+        }
     }
 
     int main(int argc, char **argv){

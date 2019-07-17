@@ -175,8 +175,8 @@ void donat1()
             rot = 0;
         }
 
-        if(pindah == 4.0f) {
-            pindah += 0.0f;
+        if(pindah >= 2.8f) {
+            pindah == 0.0f;
         } else {
             pindah += 0.01f;
         }

@@ -201,7 +201,7 @@ void donat1()
         
        
 
-        if(pindah >= 2.8f) {
+        if(pindah >= 2.98f) {
             pindah == 0.0f;
             
         } else {

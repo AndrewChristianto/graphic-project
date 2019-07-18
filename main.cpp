@@ -103,6 +103,27 @@ void tube2(){
 
     }
 
+void spring(){
+    double radius=0.4;
+    double t=1;
+    double phi=3.14159265358979323846;
+    double sudut,sudutAsli,x,y,z,tambah;
+    tambah=t/1550;
+    y=0;sudut=0;
+    glTranslatef(0.0f, 0.0f, 0.6f);
+    glColor3f (1.0, 0.0, 1.0);
+    glBegin(GL_LINE_STRIP);
+        while(y<=2.2f){
+            sudutAsli=(sudut*phi/180);
+            x=cos(sudutAsli)*radius;
+            z=sin(sudutAsli)*radius;
+            glVertex3d(z,x,y);
+            y=y+tambah; sudut++;
+        }
+    glEnd();
+
+}
+
 void donat()
 {
     float BODY_LENGTH=0.6f;
@@ -153,6 +174,13 @@ void donat1()
             glRotatef(rot, 0.0f, 0.0f, 1.0f);
             tube2(); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
         glPopMatrix();
+     
+        glPushMatrix();
+        glTranslatef(0.0f, 0.0f, pindah);
+        glRotatef(rot, 0.0f, 0.0f, 1.0f);
+        spring();
+        glPopMatrix();
+     
         glPushMatrix();
             glTranslatef(0.0f, 0.0f, pindah);
             glRotatef(rot, 0.0f, 0.0f, 1.0f);

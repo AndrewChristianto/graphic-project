@@ -249,7 +249,7 @@ static void key(unsigned char key, int x, int y)
             
         } else {
             pindah += 0.01f;
-         rot++;
+         rot-=14.0;
         }
       if(rot == 360) {
             rot = 0;

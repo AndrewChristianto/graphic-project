@@ -155,6 +155,46 @@ void donat1()
         glTranslatef(0.0f, 0.0f, 0.6f);
         gluDisk(q, BODY_RADIUS1, BODY_RADIUS2, SLICES, STACKS);
 }
+double rotate_y = 0;
+double rotate_x = 0;
+double rotate_z = 0;
+
+static void key(unsigned char key, int x, int y)
+{
+    switch (key)
+    {
+        case 27 :
+        case 'q':
+            exit(0);
+            break;
+
+        case 87: //W
+            rotate_x += 5;
+            break;
+
+        case 83: //S
+            rotate_x -= 5;
+            break;
+
+        case 65: //A
+            rotate_y += 5;
+            break;
+
+        case 68: //D
+            rotate_y -= 5;
+            break;
+
+        case 81: //Q
+            rotate_z -= 5;
+            break;
+
+        case 69: //E
+            rotate_z += 5;
+            break;
+    }
+
+    glutPostRedisplay();
+}
 
     void display_pen(){
 
@@ -167,7 +207,10 @@ void donat1()
         glRotatef(90,1.0f,0.0f,0.0f);
         glRotatef(90,0.0f,1.0f,0.0f);
         glRotatef(90,0.0f,0.0f,1.0f);
-
+        glRotatef(rotate_x, 1.0,0.0,0.0);
+        glRotatef(rotate_y, 0.0,1.0,0.0);
+        glRotatef(rotate_z, 0.0,0.0,1.0);
+     
         glTranslatef(0.0f,0.0f,4.0f);
         glPushMatrix();
             glTranslatef(0.0f, 0.0f, pindah);
@@ -223,6 +266,7 @@ void donat1()
         glutDisplayFunc(display_pen);
         glutReshapeFunc(reshape);
         initGL();
+        glutKeyboardFunc(key);
         glutMouseFunc(mouseControl);
         glutMotionFunc(mouseMotion);
         glutTimerFunc(0, timer, 0);

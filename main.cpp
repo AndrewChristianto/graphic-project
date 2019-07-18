@@ -170,15 +170,18 @@ void donat1()
         glFlush();
         glutSwapBuffers();
 
-        rot++;
-        if(rot == 360) {
-            rot = 0;
-        }
+        
+       
 
         if(pindah >= 2.8f) {
             pindah == 0.0f;
+            
         } else {
             pindah += 0.01f;
+         rot++;
+        }
+      if(rot == 360) {
+            rot = 0;
         }
     }
 
